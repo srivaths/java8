@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.function.*;
 public class Lists {
 	public static void main(String[] x) {
 		List<Integer> aList = Arrays.asList(1, 2, 3, 4, 5);
@@ -13,11 +14,17 @@ public class Lists {
 			System.out.println(anItem);
 		}
 		
-		// Java 8
+		// Java 8 using Consumer
+    //  -- forEach defined in Iterable
+    aList.forEach(new Consumer<Integer>() {
+      public void accept(Integer r) {
+        System.out.println(r);
+      }
+    });
+		
+		// Java 8 - Simplified further
 		aList.forEach((Integer anItem) -> System.out.println(anItem));
 		aList.forEach(anItem -> System.out.println(anItem));
 		aList.forEach(System.out::println);
-		
-		// TODO: how to use the consumer interface?
 	}
 }
